@@ -11,6 +11,7 @@ html{
 }
 body{
     height:100%;
+    overflow: hidden;
 }
 /* music */
 .music{
@@ -79,7 +80,7 @@ body{
 }
 /* page1 */
 #page1{
-    display: none;
+    display: block;
 }
 #page1 > .bg{
     background: url("../images/p1_bg.jpg") no-repeat center center;
@@ -87,6 +88,7 @@ body{
     z-index: -1;
 }
 #page1 > .p1_lantern{
+    color: #ffffff;
     position: absolute;
     top:-3.4%;
     right:0;
@@ -171,6 +173,36 @@ body{
 /* page2 */
 #page2{
     display: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+/*淡出*/
+#page2.fadeOut{
+    opacity: .3;
+    -webkit-transform: translate(0,-100%);
+    transform: translate(0,-100%);
+}
+#page2 >.p2_bg_loading{
+    z-index: 4;
+    background: #ef1639;
+    -webkit-animation: p2_bg_loading 2s linear forwards;
+    animation: p2_bg_loading 2s linear forwards;/*forwards:引用在最后一帧*/
+}
+@keyframes p2_bg_loading {
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-webkit-keyframes p2_bg_loading {
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity: 2;
+    }
 }
 #page2 > .bg{
     background: url("../images/p2_bg.jpg") no-repeat center center;
@@ -298,7 +330,14 @@ body{
 }
 /* page3 */
 #page3{
-    display: block;
+    display: none;
+    transition: .5s;
+    -webkit-transition: .5s;
+}
+#page3.fadeIn{
+    transform: translate(0,-100%);
+    -webkit-transform: translate(0,-100%);
+
 }
 #page3 > .bg{
     background: url("../images/p3_bg.jpg") no-repeat center center;
